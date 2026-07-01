@@ -20,13 +20,14 @@ export const MediaGallery = ({
         {images.map((image, index) => (
           <div
             key={index}
-            className="relative h-[340px] w-full sm:h-[440px]"
+            className="relative h-85 w-full sm:h-110"
             style={{ position: "relative", minHeight: "340px" }}
           >
             <Image 
               src={image.src} 
               alt={image.alt} 
               fill 
+              sizes="(min-width: 640px) 50vw, 100vw"
               className="object-cover" 
             />
           </div>

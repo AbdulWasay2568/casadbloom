@@ -14,7 +14,7 @@ const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   solid:
     "bg-[#f9e2e6] text-[#1c2340] border border-transparent hover:bg-[#f3d3d9]",
   outline:
-    "bg-transparent border-2 border-[#d4a92e] hover:bg-[#d4a92e]/10",
+    "bg-transparent border-2 border-[#D4AF37] hover:bg-[#D4AF37]/10",
 };
 
 export const Button = ({

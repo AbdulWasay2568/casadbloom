@@ -1,8 +1,19 @@
 @import "tailwindcss";
+@theme {
+  --font-playfair: var(--font-playfair);
+  --font-nunito: var(--font-nunito);
 
-/* ========================================================================== */
-/* Global baseline styles                                                     */
-/* ========================================================================== */
+  --font-family-playfair: var(--font-playfair);
+  --font-family-nunito: var(--font-nunito);
+}
+
+@utility font-playfair {
+  font-family: var(--font-playfair);
+}
+
+@utility font-nunito {
+  font-family: var(--font-nunito);
+}
 
 *,
 *::before,
@@ -23,7 +34,6 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
 img {

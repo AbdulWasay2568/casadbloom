@@ -27,6 +27,7 @@ export const Hero = ({
         src={backgroundImage}
         alt={imageAlt}
         fill
+        sizes="100vw"
         priority
         className="absolute inset-0 h-full w-full object-cover opacity-90"
       />
