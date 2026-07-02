@@ -8,7 +8,7 @@ export interface ButtonProps {
 }
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-2xl px-9 py-4 text-sm font-medium uppercase tracking-[0.12em] transition-colors duration-200";
+  "inline-flex items-center justify-center border-radius-[2px] rounded-2xl px-12 py-4.5 text-xs font-normal uppercase tracking-[0.12em] transition-colors duration-200";
 
 const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   solid:

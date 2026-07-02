@@ -20,7 +20,7 @@ export const MediaGallery = ({
         {images.map((image, index) => (
           <div
             key={index}
-            className="relative h-85 w-full sm:h-110"
+            className="relative h-165 w-full"
             style={{ position: "relative", minHeight: "340px" }}
           >
             <Image 

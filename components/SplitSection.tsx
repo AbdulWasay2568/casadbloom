@@ -22,45 +22,63 @@ export const SplitSection = ({
 }: SplitSectionProps) => {
   const isImageLeft = imagePosition === "left";
 
+  // Section paddings: Compact on mobile, wider on tablet, expansive on desktop
+  const sectionClasses = "px-4 py-16 sm:px-8 md:px-16 lg:px-24 xl:px-36 lg:py-24";
+
+  // Flex/Grid orders to swap visual positions on screens lg and up
+  const contentOrderClass = isImageLeft ? "lg:order-2" : "lg:order-1";
+  const imageOrderClass = isImageLeft ? "lg:order-1" : "lg:order-2";
+
   return (
-    <section className={`${backgroundColor} px-4 py-16 md:px-6 md:py-20`}>
-      <div className="mx-auto grid max-w-[1700px] items-center gap-10 md:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] md:gap-10">
-        {/* Content Box */}
-        <div className={`${isImageLeft ? "md:order-2" : "md:order-1"}`}>
+    <section className={`${backgroundColor} ${sectionClasses} overflow-hidden`}>
+      <div className="mx-auto grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24">
+        
+        {/* Content Column */}
+        <div className={`flex flex-col items-center text-center lg:items-start lg:text-left ${contentOrderClass}`}>
           <h2
-            className="max-w-[11ch] text-[clamp(3rem,5vw,5.4rem)] font-bold leading-[0.94] tracking-[-0.04em] text-black"
-            style={{ fontFamily: "var(--font-playfair)" }}
+            className="text-4xl font-bold leading-[1.1] text-black sm:text-5xl xl:text-[60px] xl:leading-[0.96]"
+            style={{ 
+              fontFamily: "var(--font-playfair)",
+              maxWidth: isImageLeft ? "9ch" : "8ch" 
+            }}
           >
             {title}
           </h2>
+          
           {description && (
-            <p className="mt-6 max-w-sm text-[1.05rem] leading-[1.65] text-black md:text-[1.25rem]">
+            <p className="mt-6 text-base leading-[1.5] text-black sm:text-lg max-w-md">
               {description}
             </p>
           )}
+          
           {button && (
-            <Button
-              label={button.label}
-              href={button.href}
-              variant={button.variant}
-              className="mt-8"
-            />
+            <div className="mt-8">
+              <Button
+                label={button.label}
+                href={button.href}
+                variant={button.variant}
+                className="inline-flex h-12 items-center justify-center rounded-[28px] px-8 text-sm font-bold tracking-[0.15em] transition-transform active:scale-95"
+              />
+            </div>
           )}
         </div>
-        
-        {/* Image Box */}
-        <div
-          className={`relative ${isImageLeft ? "md:order-1" : "md:order-2"}`}
-          style={{ position: "relative", minHeight: "420px" }}
+
+        {/* Image Column */}
+        <div 
+          className={`relative w-full overflow-hidden rounded-md border-[3px] border-white shadow-[0_2px_10px_rgba(0,0,0,0.22)] ${imageOrderClass} ${
+            isImageLeft ? "aspect-[4/3] xl:aspect-[646/613]" : "aspect-[16/10] xl:aspect-[819/423]"
+          }`}
         >
           <Image
             src={imageSrc}
             alt={imageAlt}
             fill
-            sizes="(min-width: 768px) 60vw, 100vw"
-            className="rounded-md border-[3px] border-white object-cover shadow-[0_2px_10px_rgba(0,0,0,0.22)]"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            priority
+            className="object-cover"
           />
         </div>
+
       </div>
     </section>
   );

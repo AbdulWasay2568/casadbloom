@@ -32,26 +32,30 @@ export const Hero = ({
         className="absolute inset-0 h-full w-full object-cover opacity-90"
       />
       <div className="absolute inset-0 bg-black/35" />
-      <div className="relative z-10 mx-auto flex w-full max-w-screen-2xl items-center px-6 py-24 sm:px-10 lg:px-16">
-        <div className="max-w-xl">
+      
+      {/* Container with responsive padding and alignment */}
+      <div className="relative z-10 flex w-full items-center px-6 py-20 sm:px-12 md:px-20 lg:px-32">
+        {/* Adjusted responsive max-width and margins */}
+        <div className="mx-auto text-center md:mx-0 md:max-w-2xl md:text-left">
           <h1
-            className="text-[90px] font-semibold leading-[0.92] tracking-tighter text-white"
+            className="text-4xl font-bold leading-tight tracking-normal text-white sm:text-5xl md:text-6xl xl:text-8xl xl:leading-none"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-          {title}
+            {title}
           </h1>
 
           {buttons.length > 0 && (
-            <div className="mt-10 flex flex-wrap gap-4 sm:mt-12 sm:gap-5">
-            {buttons.map((btn, index) => (
-              <Button
-                key={index}
-                label={btn.label}
-                href={btn.href}
-                variant={btn.variant}
-                className={btn.className}
-              />
-            ))}
+            /* Buttons stack vertically on tiny screens, shift horizontal on sm+ */
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row md:justify-start">
+              {buttons.map((btn, index) => (
+                <Button
+                  key={index}
+                  label={btn.label}
+                  href={btn.href}
+                  variant={btn.variant}
+                  className={`w-full sm:w-auto ${btn.className || ""}`}
+                />
+              ))}
             </div>
           )}
         </div>

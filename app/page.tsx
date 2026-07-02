@@ -5,6 +5,7 @@ import { Banner } from "@/components/Banner";
 import { SplitSection } from "@/components/SplitSection";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { MediaGallery } from "@/components/MediaGallery";
+import { WaveDivider } from "@/components/WaveDivider";
 
 export const dynamic = "force-dynamic";
 
@@ -98,6 +99,8 @@ export default function Home() {
           }}
         />
 
+        <WaveDivider />
+
         <SplitSection
           title="Shop Holidays & Occasions"
           imageSrc={IMG.arrangement}
@@ -115,11 +118,10 @@ export default function Home() {
           sectionTitle="What we do"
           sectionSubtitle="It all begins with a vision. Whether it's an unforgettable event, a stunning floral arrangement, or the perfect gift, we bring your ideas to life."
           items={WHAT_WE_DO_ITEMS}
-          columnsClassName="sm:grid-cols-3"
         />
 
         <Banner backgroundColor="bg-[#F9E5EA]">
-          <p className="font-playfair text-lg font-bold text-[#D4AF37] md:text-xl">
+          <p className="font-playfair text-lg font-semibold text-[#D4AF37] py-6">
             Farm-fresh flowers for any special occasion or just because.{" "}
             <Link href="/get-in-touch" className="underline hover:opacity-80">
               Order Now
